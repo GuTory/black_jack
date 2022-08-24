@@ -12,7 +12,7 @@ export class Dealer extends Player{
      * @param {*} numberOfDecks paklik száma
      */
     constructor(table, numberOfDecks){
-        super(table, "Dealer");
+        super(table, "Osztó");
         this.Decks = new Array();
         this.LastPicked = 0;
         for(var i=0; i < numberOfDecks; i++){
@@ -49,8 +49,9 @@ export class Dealer extends Player{
     addCard = (card) => {
         if(this.valueOfDeck() < 17 ){
             this.Cards.push(card);
+            return card;
         } else {
-            Deck(this.Decks[this.LastPicked]).push(card);
+            return null;
         }
     }
 }

@@ -1,9 +1,27 @@
 export class Card {
+    /**
+     * szimbólum (2..10 v JQKA)
+     */
     Symbol;
+
+    /**
+     * Típus
+     */
     Suit;
+
+    /**
+     *  Szín
+     */
     Color;
 
+    /**
+     * kép forrása
+     */
     PictureSource;
+
+    /**
+     * érték
+     */
     Value;
     
     /**

@@ -2,20 +2,48 @@ import { Card } from "./card.js";
 import { Deck } from "./deck.js";
 
 export class Player {
+
+    /**
+     * Játékos pontja
+     */
+    Points;
+
+    /**
+     * Játékos neve
+     */
     Name;
+
+    /**
+     * Játékos húzott kártyái
+     */
     Cards;
+
+    /**
+     * Asztal, ahol ül
+     */
     Table;
 
     constructor(table, name){
+        this.Points = 0;
         this.Name = name;
-        this.Cards = new Array();
+        this.Cards = [];
         this.Table = table;
     }
 
+    /**
+     * Kártya hozzáadása
+     * @param card
+     * @returns {*}
+     */
     addCard = (card) => {
         this.Cards.push(card);
+        return card;
     }
 
+    /**
+     * Pakli értéke
+     * @returns {number}
+     */
     valueOfDeck = () => {
         var sum = 0;
         var ace;
@@ -27,7 +55,7 @@ export class Player {
             }
         }
         var aces = this.numberOfAces();
-        if(aces == 0){
+        if(aces === 0){
             return sum;
         } else {
             (sum + ace.Value[0] + (aces-1)*ace.Value[1] > 21) 
@@ -37,6 +65,10 @@ export class Player {
         return sum;
     }
 
+    /**
+     * Ászok száma a pontszámításhoz
+     * @returns {number}
+     */
     numberOfAces = () => {
         var num = 0;
         for(var index = 0; index < this.Cards.length; index++){
